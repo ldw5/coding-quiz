@@ -1,0 +1,51 @@
+/* Universal Selector */
+*{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* Element Selectors */
+body{
+    background: white;
+    
+}
+
+
+/* Class Selectors */
+.start-button, .container{
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50, -50);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    
+}
+
+.container .title{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    
+}
+
+
+/* ID Selectors */
+#start-btn{
+    font-size: 15px;
+    color:white;
+    background: purple;
+    cursor: pointer;
+}
