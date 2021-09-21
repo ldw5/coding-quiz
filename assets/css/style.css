@@ -11,41 +11,57 @@ body{
     
 }
 
+header {
+    display: flex;
+    flex-direction: row;
+    gap: 420px;
+}
+
+
 
 /* Class Selectors */
-.start-button, .container{
-    
+.direction-box{
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50, -50);
+    width: 540px;
+    transform: translate(-50%, -50%);
+    background: white;   
 }
 
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background: white;
-    
-}
-
-.container .title{
-    height: 60px;
+.direction-box .direction-title {
+    height: 20px;
     width: 100%;
     display: flex;
     align-items: center;
+    padding: 0 35px;
+    font-size: 20px;
+    font-weight: 600;
+} 
+
+.direction-box .info-direction {
+    padding: 15px 35px;
 }
 
-.title {
-    
+.direction-box .info-direction .directions {
+    margin: 5px 0;
+    font-size: 20px;
 }
 
+.direction-box .buttons {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 35px;
+}
 
 /* ID Selectors */
 #start-btn{
-    font-size: 15px;
+    font-size: 20px;
+    width: 105px;
     color:white;
+    border-radius: 10px;
     background: purple;
     cursor: pointer;
 }
