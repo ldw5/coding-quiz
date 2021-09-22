@@ -1,67 +1,99 @@
+:root {
+    background-color: white;
+}
+
 /* Universal Selector */
 *{ 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
 }
-/* Element Selectors */
-body{
-    background: white;
-    
+
+h1{
+    font-size: 40px;
+    color: black;
+    margin-bottom: 15px;
 }
 
-header {
+h2{
+    font-size: 30px;
+    margin-bottom: 64px;
+}
+
+p{
+    margin-bottom: 10px;
+}
+
+.q-container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    flex-direction: row;
-    gap: 420px;
-}
-
-
-
-/* Class Selectors */
-.direction-box{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 540px;
-    transform: translate(-50%, -50%);
-    background: white;   
-}
-
-.direction-box .direction-title {
-    height: 20px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0 35px;
-    font-size: 20px;
-    font-weight: 600;
-} 
-
-.direction-box .info-direction {
-    padding: 15px 35px;
-}
-
-.direction-box .info-direction .directions {
-    margin: 5px 0;
-    font-size: 20px;
-}
-
-.direction-box .buttons {
-    height: 20px;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 0 35px;
+    align-items: center;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 32px;
 }
 
-/* ID Selectors */
-#start-btn{
-    font-size: 20px;
-    width: 105px;
-    color:white;
-    border-radius: 10px;
-    background: purple;
-    cursor: pointer;
+.flex-column {
+    display: flex;
+    flex-direction: column;
 }
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.hidden{
+    display: none;
+}
+
+.btn{
+    font-size: 20px;
+    padding: 32px 0;
+    width: 190px;
+    text-align: center;
+    margin-bottom: 16px;
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: purple;
+    border-radius: 40px;
+}
+
+.btn:hover{
+    cursor: pointer;
+    transition: transform 150ms;
+    transform: scale(1);
+    opacity: 0.7;
+}
+
+.btn[disabled]:hover{
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+#highscore-btn {
+    background-color: white;
+    color: purple;
+}
+
+#highscore-btn:hover{
+    box-shadow: lavender;
+}
+
+
+
+
+
