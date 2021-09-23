@@ -8,14 +8,53 @@
     <title>Code Quiz</title>
 </head>
 <body>
-    <div class="container">
+    <header>
+        <div class= "card timer">
+            <div class = "timer-text">
+            <div class="large-font timer-count">75</div>
+            <h3>time</h3>
+        </div>
+    </header>
+
+    <div class="q-container">
         <div id="quiz" class="justify-center flex column">
             <div id="display">
                 <div class="display-item">
-                    <p id="pr-text" class=""></p>
+                    <p id="progressText" class="display-pre">
+                        Question
+                    </p>
+                    <div id="progressTab">
+                        <div id="progressFull"></div>
+                    </div>
                 </div>
+                <div class="display-item">
+                    <p class="display-pre">
+                        Your Score
+                    </p>
+                    <h1 class="display-main-text" id="score">
+                        0
+                    </h1>
+                </div>
+            </div>
+            <h1 id="questions">Commonly used data types DO NOT include:</h1>
+            <div class="answer-container">
+                <p class="answer-pre">1.</p>
+                <p class="answer-text" data-number="1">strings</p>
+            </div>
+            <div class="answer-container">
+                <p class="answer-pre">2.</p>
+                <p class="answer-text" data-number="2">boolean</p>
+            </div>
+            <div class="answer-container">
+                <p class="answer-pre">3.</p>
+                <p class="answer-text" data-number="3">alerts</p>
+            </div>
+            <div class="answer-container">
+                <p class="answer-pre">4.</p>
+                <p class="answer-text" data-number="4">numbers</p>
             </div>
         </div>
     </div>
+    <script src="./assets/js/script.js"></script> 
 </body>
 </html>
