@@ -44,6 +44,7 @@ let questions = [
         question4: 'commas',
         answer: 1,
     },
+    
 
 ]
 
@@ -61,7 +62,7 @@ getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter > maxQuestions) {
         localStorage.setItem('mostRecentScore', score)
 
-        return window.location.assign('/end.html')
+        return window.location.assign('./end.html')
     }
 
     questionCounter++
