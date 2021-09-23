@@ -21,7 +21,7 @@ saveHighScore = e => {
     highScores.push(score)
 
     highScores.sort((a,b) => {
-        returnb.score - a.score
+        return b.score - a.score
     })
 
     highScores.splice(5)

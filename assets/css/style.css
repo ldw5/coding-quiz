@@ -158,12 +158,12 @@ p{
 }
 
 /* ID Selector */
-#highscore-btn {
+#high-score-btn {
     background-color: white;
     color: purple;
 }
 
-#highscore-btn:hover{
+#high-score-btn:hover{
     box-shadow: lavender;
 }
 
