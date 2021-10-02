@@ -1,8 +1,8 @@
-const question = document.querySelector('#questions');
-const choices = Array.from(document.querySelectorAll('.answer-text'));
-const progressTab = document.querySelector('#progressTab');
-const scoreText = document.querySelector('#score');
-const progressFull = document.querySelector('#progressFull');
+var questionEl = document.getElementById('#questions');
+var choicesEl = document.getElementById('.answer-text');
+var progressTabEl = document.getElementById('#progressTab');
+var scoreTextEl = document.getElementById('#score');
+var progressFullEl = document.getElementById('#progressFull');
 
 
 let currentQuestion = {}
@@ -11,7 +11,7 @@ let score = 0
 let questionCounter = 0
 let availableQuestions = []
 
-let questions = [
+let question = [
     {
         question: 'Commonly used data types DO NOT include:',
         question1: 'strings',
@@ -46,7 +46,7 @@ let questions = [
     },
     
 
-]
+]//
 
 const ScorePoints = 100
 const maxQuestions = 4

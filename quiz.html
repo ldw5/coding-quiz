@@ -8,50 +8,30 @@
     <title>Code Quiz Challenge</title>
 </head>
 <body>
-    <header>
-        <div class= "card timer">
-            <div class = "timer-text">
-            <div class="large-font timer-count">75</div>
-            <h3>time</h3>
-        </div>
-    </header>
+    <div class="container">
+        <div class="quiz-box">
+            <div id="quiz">
+                <h1>Code Quiz Challenge</h1>
+                <div class="quiz-header">
+                    <p id="progress"> Question x of y</p>
+                    <p id="count-down">75</p>
+                </div>
+                <p id="question">Commonly used data types DO NOT include:</p>
 
-    <div class="q-container">
-        <div id="quiz" class="justify-center flex column">
-            <div id="display">
-                <div class="display-item">
-                    <p id="progressText" class="display-pre">
-                        Question
-                    </p>
-                    <div id="progressTab">
-                        <div id="progressFull"></div>
-                    </div>
+                <div class="buttons">
+                    <button class="btn" id="btn0">
+                        1. <span id="choice0"></span>
+                    </button>
+                    <button class="btn" id="btn1">
+                        2. <span id="choice1"></span>
+                    </button>
+                    <button class="btn" id="btn2">
+                        3. <span id="choice2"></span>
+                    </button>
+                    <button class="btn" id="btn3">
+                        4. <span id="choice3"></span>
+                    </button>
                 </div>
-                <div class="display-item">
-                    <p class="display-pre">
-                        Your Score
-                    </p>
-                    <h1 class="display-main-text" id="score">
-                        0
-                    </h1>
-                </div>
-            </div>
-            <h1 id="questions">Commonly used data types DO NOT include:</h1>
-            <div class="answer-container">
-                <p class="answer-pre">1.</p>
-                <p class="answer-text" data-number="1">strings</p>
-            </div>
-            <div class="answer-container">
-                <p class="answer-pre">2.</p>
-                <p class="answer-text" data-number="2">boolean</p>
-            </div>
-            <div class="answer-container">
-                <p class="answer-pre">3.</p>
-                <p class="answer-text" data-number="3">alerts</p>
-            </div>
-            <div class="answer-container">
-                <p class="answer-pre">4.</p>
-                <p class="answer-text" data-number="4">numbers</p>
             </div>
         </div>
     </div>
