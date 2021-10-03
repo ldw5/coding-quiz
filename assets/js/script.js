@@ -1,115 +1,129 @@
-var questionEl = document.getElementById('#questions');
-var choicesEl = document.getElementById('.answer-text');
-var progressTabEl = document.getElementById('#progressTab');
-var scoreTextEl = document.getElementById('#score');
-var progressFullEl = document.getElementById('#progressFull');
-
-
-let currentQuestion = {}
-let acceptAnswers = true
-let score = 0
-let questionCounter = 0
-let availableQuestions = []
-
-let question = [
-    {
-        question: 'Commonly used data types DO NOT include:',
-        question1: 'strings',
-        question2: 'booleans',
-        question3: 'alerts',
-        question4: 'numbers',
-        answer: 3,
-    },
-    {
-        question: 'The condition in an if/else statement is enclosed within __.',
-        question1: 'curly brackets',
-        question2: 'quotes',
-        question3: 'square brackets',
-        question4: 'parentheses',
-        answer: 4,
-    },
-    {
-        question: 'Arrays in JavaScript can be used to store',
-        question1: 'other arrays',
-        question2: 'numbers amd strings',
-        question3: 'booleans',
-        question4: 'All of the above',
-        answer: 4,
-    },
-    {
-        question: 'String values must be enclosed within __ when being assigned to variables.',
-        question1: 'quotes',
-        question2: 'parentheses',
-        question3: 'curly brackets',
-        question4: 'commas',
-        answer: 1,
-    },
-    
-
-]//
-
-const ScorePoints = 100
-const maxQuestions = 4
-
-startGame = () => {
-    questionCounter = 0
-    score = 0
-    availableQuestions = [...questions]
-    getNewQuestion()
-}
-
-getNewQuestion = () => {
-    if(availableQuestions.length === 0 || questionCounter > maxQuestions) {
-        localStorage.setItem('mostRecentScore', score)
-
-        return window.location.assign('./end.html')
+//Quiz
+class Quiz {
+    constructor(questions) {
+        this.score = 0;
+        this.questions = questions;
+        this.questionIndex = 0;
     }
 
-    questionCounter++
-    progressText.innerText = `Question ${questionCounter} of ${maxQuestions}`
-    progressFull.style.width = `${(questionCounter/maxQuestions) * 100}%`
+    getQuestionIndex() {
+        return this.questions[this.questionIndex];
+    }
 
-    const questionIndex = Math.floor(Math.random() * availableQuestions.length)
-    currentQuestion = availableQuestions[questionIndex]
-    questions.innerText = currentQuestion.questions
+    guess(answer) {
+        if (this.getQuestionIndex().isCorrectAnswer(answer)) {
+            this.score++;
+        }
+        this.questionIndex++;
+    }
 
-    choices.forEach(choice => {
-        const number = choice.dataset['number']
-        choice.innerText = currentQuestion['choice' + number]
-    })
-
-    availableQuestions.splice(questionIndex, 1)
-    acceptAnswers = true
+    isEnded() {
+        return this.questionIndex === this.questions.length;
+    }
 }
 
-choices.forEach(choice => {
-    choice.addEventListener('click', e => {
-        if(!acceptAnswers) return
+//Questions
+class Question {
+    constructor(text, choices, answer) {
+        this.text = text;
+        this.choices = choices;
+        this.answer = answer;
+    }
 
-        acceptAnswers = false
-        const selectedChoice = e.target
-        const selectedAnswer = selectedChoice.dataset['number']
+    isCorrectAnswer(choice) {
+        return this.answer === choice;
+    }
+}
 
-        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct':
-        'incorrect'
-        
-        if(classToApply === 'correct') {
-            incrementScore(ScorePoints)
+function displayQuestion() {
+    if (quiz.isEnded()) {
+        showScores();
+    } else {
+        //show question
+        let questionElement = document.getElementById("question");
+        questionElement.innerHTML = quiz.getQuestionIndex().text;
+
+        //show options
+        let choices = quiz.getQuestionIndex().choices;
+        for (let i = 0; i < choices.length; i++) {
+            let choiceElement = document.getElementById("choice" + i);
+            choiceElement.innerHTML = choices[i];
+            guess("btn" + i, choices[i]);
         }
 
-        selectedChoice.parentElement.classList.add(classToApply)
+        showProgress();
+    }
+};
 
-        setTimeout(() => {
-            selectedChoice.parentElement.classList.remove(classToApply)
-            getNewQuestion()
-        }, 1000)
-    })
-})
-
-
-incrementScore = num => {
-    score +=num
-    scoreText.innerText = score
+function guess(id,guess) {
+    let button = document.getElementById(id);
+    button.onclick = function() {
+        quiz.guess(guess);
+        displayQuestion();
+    }
 }
 
-startGame ()
+function showProgress() {
+    let currentQuestionNumber = quiz.questionIndex + 1;
+    let progressElement = document.getElementById("progress");
+    progressElement.innerHTML = 
+    `Question ${currentQuestionNumber} of ${quiz.questions.length}`;
+}
+
+function showScores() {
+    let quizEndHTML = 
+    `
+    <h1>Quiz Completed</h1>
+    <h2 id="score">Your score: ${quiz.score} of ${quiz.questions.length}</h2>
+    <div class="quiz-repeat">
+    <a href="index.html"> Take Quiz Again</a>
+    </div>
+    `;
+
+    let quizElement = document.getElementById("quiz");
+    quizElement.innerHTML = quizEndHTML;
+}
+
+let questions = [
+    new Question(
+        "Commonly used data types DO NOT include:", ["strings","booleans","alerts","numbers"], "alerts"
+    ),
+    new Question(
+        "Hyper Text Markup Language stands for?", ["XHTML","JQuery","HTML","CSS"], "HTML"
+    ),
+    new Question(
+        "The condition in an if/else statement is enclosed within __.", ["curly brackets","quotes","square brackets","parentheses"], "parentheses"
+    ),
+    new Question(
+        "Arrays in JavaScript can be used to store", ["other arrays","numbers amd strings","booleans","All of the above"], "All of the above"
+    ),
+    new Question(
+        "String values must be enclosed within __ when being assigned to variables.", ["quotes","parentheses","curly brackets","commas"], "quotes"
+    ),
+];
+
+let quiz = new Quiz(questions);
+
+displayQuestion();
+
+let time = 2;
+let quizMinutes = time * 60 * 60;
+quizTime = quizMinutes / 60;
+
+let counting = document.getElementById("count-down");
+
+function startCountdown() {
+    let quizTimer = setInterval(function(){
+        if (quizTime <= 0) {
+            clearInterval(quizTimer);
+            showScores();
+        } else {
+            quizTime--;
+            let sec = Math.floor(quizTime % 60);
+            let min = Math.floor(quizTime / 60) % 60;
+            counting.innerHTML = `TIME: ${min} : ${sec}`;
+        }
+    }, 1000)
+}
+
+startCountdown();
